@@ -1,6 +1,5 @@
 ﻿using Common.Logging;
 using System.Web.Http.ExceptionHandling;
-using WebApp.Helpers;
 
 namespace WebApp.Logging
 {
@@ -22,7 +21,7 @@ namespace WebApp.Logging
                         "{3}",
                         request.Method, request.RequestUri,
                         request.Headers,
-                        content);
+                        content ?? "[empty]");
                 },
                 context.Exception);
         }

@@ -16,7 +16,7 @@ namespace WebApp.Logging
             var response = await base.SendAsync(request, cancellationToken);
             time.Stop();
 
-            Log.Debug(log =>
+            Log.Info(log =>
                 log("{0} {1} -> {2} {3} [{4}ms]",
                     request.Method, request.RequestUri,
                     (int)response.StatusCode, response.ReasonPhrase,

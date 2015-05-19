@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Helpers\RequestExtensions.cs" />
+    <Compile Include="Logging\RequestExtensions.cs" />
     <Compile Include="Logging\ErrorLog.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
