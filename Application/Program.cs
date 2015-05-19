@@ -15,16 +15,23 @@ namespace Application
                 { "configType", "INLINE" }
             });
 
-            var log = LogManager.GetLogger<ApiUsage>();
+            var basicLog = LogManager.GetLogger<Program>();
 
-            log.Debug(w => w("User registered"));
-            log.Info(w => w("User registered"));
-            log.Warn(w => w("User registered"));
-            log.Error(w => w("User registered"));
+            basicLog.Debug(w => w("Example DEBUG"));
+            basicLog.Info(w => w("Example INFO"));
+            basicLog.Warn(w => w("Example WARN"));
+            basicLog.Error(w => w("Example ERROR"));
 
-            log.EventInfo(new { name = "test" });
-            log.EventInfo(new UserRegistered { Name = "test" });
+            var userRegistered = new UserRegistered { Id = 23, Name = "Test User" };
 
+            var eventsLog = LogManager.GetLogger<Events>();
+            eventsLog
+                .EventInfo(new { name = "test" })
+                .EventInfo(new UserRegistered { Name = "test" })
+                .EventDebug(new { Id = 23, Name = "Matthew" })
+                .EventInfo(userRegistered);
+
+            var log = LogManager.GetLogger<Random>();
             var random = new Random();
             for (int i = 0; i < 1000; i++)
             {
@@ -36,10 +43,11 @@ namespace Application
         }
     }
 
-    public class ApiUsage { }
+    public abstract class Events { }
 
     public class UserRegistered
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 
