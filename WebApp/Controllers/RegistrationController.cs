@@ -11,7 +11,7 @@ namespace WebApp.Controllers
     {
         public IEnumerable<Registration> Get()
         {
-            //throw new Exception("Test exception");
+            throw new Exception("Test exception");
 
             return new Collection<Registration> {
                 new Registration { Name = "Bill", Email = "bill@example.com", Password = "password" },

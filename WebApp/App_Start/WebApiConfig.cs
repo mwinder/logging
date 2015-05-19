@@ -18,9 +18,9 @@ namespace WebApp
 
         private static void Register(HttpConfiguration configuration)
         {
-            configuration.MessageHandlers.Add(new UsageLog());
+            //configuration.MessageHandlers.Add(new UsageLog());
 
-            configuration.Services.Add(typeof(IExceptionLogger), new ErrorLog());
+            //configuration.Services.Add(typeof(IExceptionLogger), new ErrorLog());
 
             configuration.Formatters
                 .JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

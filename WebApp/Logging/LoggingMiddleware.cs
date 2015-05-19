@@ -15,18 +15,37 @@ namespace WebApp.Logging
 
         public async override Task Invoke(IOwinContext context)
         {
-            var time = Stopwatch.StartNew();
-            await Next.Invoke(context);
-            time.Stop();
-
             var request = context.Request;
             var response = context.Response;
 
-            Log.Info(log =>
-                log("{0} {1} -> {2} {3} [{4}ms]",
-                    request.Method, request.Uri,
-                    response.StatusCode, response.ReasonPhrase,
-                    time.ElapsedMilliseconds));
+            var time = Stopwatch.StartNew();
+            try
+            {
+                await Next.Invoke(context);
+                time.Stop();
+
+                Log.Info(log =>
+                    log("{0} {1} -> {2} {3} [{4}ms]",
+                        request.Method, request.Uri,
+                        response.StatusCode, response.ReasonPhrase,
+                        time.ElapsedMilliseconds));
+            }
+            catch (Exception exception)
+            {
+                time.Stop();
+                Log.Error(log =>
+                    {
+                        var content = "TODO";
+                        log("Error processing request\r\n" +
+                            "{0} {1}\r\n" +
+                            "{2}\r\n" +
+                            "{3}",
+                            request.Method, request.Uri,
+                            request.Headers,
+                            content ?? "[empty]");
+                    },
+                    exception);
+            }
         }
     }
 }
