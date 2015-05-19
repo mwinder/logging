@@ -1,8 +1,6 @@
 ﻿using Common.Logging;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Http.ExceptionHandling;
+using WebApp.Helpers;
 
 namespace WebApp.Logging
 {
@@ -13,12 +11,19 @@ namespace WebApp.Logging
         public override void Log(ExceptionLoggerContext context)
         {
             var request = context.Request;
+
             Logger.Error(
-                log => log("Error processing request\r\n" +
-                           "{0} {1}\r\n" +
-                           "{2}",
-                           request.Method, request.RequestUri,
-                           request.Headers),
+                async log =>
+                {
+                    var content = await request.GetContent();
+                    log("Error processing request\r\n" +
+                        "{0} {1}\r\n" +
+                        "{2}\r\n" +
+                        "{3}",
+                        request.Method, request.RequestUri,
+                        request.Headers,
+                        content);
+                },
                 context.Exception);
         }
     }
