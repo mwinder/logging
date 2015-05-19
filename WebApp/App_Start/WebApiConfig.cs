@@ -1,7 +1,5 @@
-﻿using Common.Logging;
-using Common.Logging.Configuration;
-using Common.Logging.Log4Net;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
+using Owin;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using WebApp.Logging;
@@ -10,12 +8,16 @@ namespace WebApp
 {
     public static class WebApiConfig
     {
-        public static void Register(HttpConfiguration configuration)
+        public static IAppBuilder UseWebApp(this IAppBuilder app, HttpConfiguration configuration)
         {
-            LogManager.Adapter = new Log4NetLoggerFactoryAdapter(new NameValueCollection {
-                { "configType", "INLINE" }
-            });
+            Register(configuration);
+            app.UseWebApi(configuration);
 
+            return app;
+        }
+
+        private static void Register(HttpConfiguration configuration)
+        {
             configuration.MessageHandlers.Add(new UsageLog());
 
             configuration.Services.Add(typeof(IExceptionLogger), new ErrorLog());
