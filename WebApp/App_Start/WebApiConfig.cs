@@ -3,6 +3,7 @@ using Common.Logging.Configuration;
 using Common.Logging.Log4Net;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using WebApp.Logging;
 
 namespace WebApp
@@ -15,7 +16,9 @@ namespace WebApp
                 { "configType", "INLINE" }
             });
 
-            configuration.MessageHandlers.Add(new ApiUsage());
+            configuration.MessageHandlers.Add(new UsageLog());
+
+            configuration.Services.Add(typeof(IExceptionLogger), new ErrorLog());
 
             configuration.Formatters
                 .JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
