@@ -9,7 +9,7 @@ namespace Application
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             LogManager.Adapter = new Log4NetLoggerFactoryAdapter(new NameValueCollection {
                 { "configType", "INLINE" }
@@ -22,8 +22,8 @@ namespace Application
             log.Warn(w => w("User registered"));
             log.Error(w => w("User registered"));
 
-            log.Event(new { name = "test" });
-            log.Event(new UserRegistered { Name = "test" });
+            log.EventInfo(new { name = "test" });
+            log.EventInfo(new UserRegistered { Name = "test" });
 
             var random = new Random();
             for (int i = 0; i < 1000; i++)
@@ -32,22 +32,28 @@ namespace Application
                 Thread.Sleep(random.Next(250));
             }
 
-            System.Console.ReadLine();
+            Console.ReadLine();
         }
     }
 
-    class ApiUsage { }
+    public class ApiUsage { }
 
-    class UserRegistered
+    public class UserRegistered
     {
         public string Name { get; set; }
     }
 
-    static class LogExtensions
+    public static class LogExtensions
     {
-        public static ILog Event(this ILog log, object value)
+        public static ILog EventDebug(this ILog log, object @event)
         {
-            log.Info(JsonConvert.SerializeObject(value));
+            log.Debug(w => w("[{0}] -> {1}", @event.GetType(), JsonConvert.SerializeObject(@event)));
+            return log;
+        }
+
+        public static ILog EventInfo(this ILog log, object @event)
+        {
+            log.Info(w => w("[{0}] -> {1}", @event.GetType(), JsonConvert.SerializeObject(@event)));
             return log;
         }
     }
