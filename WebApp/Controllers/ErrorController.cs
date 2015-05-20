@@ -7,22 +7,22 @@ namespace WebApp.Controllers
     {
         public IHttpActionResult Get()
         {
-            throw new Exception("Example error");
+            throw new Exception("GET error");
         }
 
         public IHttpActionResult Post()
         {
-            throw new Exception("Example error");
+            throw new Exception("POST error");
         }
 
         public IHttpActionResult Put()
         {
-            throw new Exception("Example error");
+            throw new Exception("PUT error");
         }
 
         public IHttpActionResult Delete()
         {
-            throw new Exception("Example error");
+            throw new Exception("DELETE error");
         }
     }
 }
