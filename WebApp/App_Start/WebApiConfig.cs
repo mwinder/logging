@@ -8,8 +8,9 @@ namespace WebApp
 {
     public static class WebApiConfig
     {
-        public static IAppBuilder UseWebApp(this IAppBuilder app, HttpConfiguration configuration)
+        public static IAppBuilder UseWebApp(this IAppBuilder app)
         {
+            var configuration = new HttpConfiguration();
             Register(configuration);
             app.UseWebApi(configuration);
 

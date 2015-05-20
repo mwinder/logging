@@ -1,6 +1,5 @@
 ﻿using Common.Logging;
 using Microsoft.Owin;
-using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 

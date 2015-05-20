@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HypermediaExtensions.cs" />
     <Compile Include="Logging\LoggingMiddleware.cs" />
     <Compile Include="Logging\RequestExtensions.cs" />
     <Compile Include="Logging\ErrorLog.cs" />

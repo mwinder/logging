@@ -28,7 +28,7 @@ namespace WebApp.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Created(Url.Link("DefaultApi", new { id = 123 }), registration);
+            return Created(Url.Href(new { id = 123 }), registration);
         }
     }
 }

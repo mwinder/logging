@@ -3,7 +3,6 @@ using Common.Logging.Configuration;
 using Common.Logging.Log4Net;
 using Microsoft.Owin;
 using Owin;
-using System.Web.Http;
 using WebApp.Logging;
 
 [assembly: OwinStartup(typeof(WebApp.Startup))]
@@ -19,9 +18,7 @@ namespace WebApp
             });
 
             application.Use<LoggingMiddleware>();
-
-            var configuration = new HttpConfiguration();
-            application.UseWebApp(configuration);
+            application.UseWebApp();
         }
     }
 }
