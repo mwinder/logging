@@ -18,7 +18,7 @@ namespace WebApp.Logging
                     log("Error processing request\r\n" +
                         "{0} {1}\r\n" +
                         "{2}\r\n" +
-                        "{3}",
+                        "{3}\r\n",
                         request.Method, request.RequestUri,
                         request.Headers,
                         content ?? "[empty]");

@@ -4,3 +4,4 @@ packages/
 *.log*
 *.suo
 *.user
+logs/

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Web.Http;
 using WebApp.Models;
 
@@ -11,7 +9,7 @@ namespace WebApp.Controllers
     {
         public IEnumerable<Registration> Get()
         {
-            //throw new Exception("Test exception");
+            //throw new System.Exception("Test exception");
 
             return new Collection<Registration> {
                 new Registration { Name = "Bill", Email = "bill@example.com", Password = "password" },
