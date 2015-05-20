@@ -24,6 +24,8 @@ namespace WebApp.Logging
                         content ?? "[empty]");
                 },
                 context.Exception);
+
+            Logger.Error(request);
         }
     }
 }
