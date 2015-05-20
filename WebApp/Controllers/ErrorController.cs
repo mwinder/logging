@@ -9,5 +9,20 @@ namespace WebApp.Controllers
         {
             throw new Exception("Example error");
         }
+
+        public IHttpActionResult Post()
+        {
+            throw new Exception("Example error");
+        }
+
+        public IHttpActionResult Put()
+        {
+            throw new Exception("Example error");
+        }
+
+        public IHttpActionResult Delete()
+        {
+            throw new Exception("Example error");
+        }
     }
 }
