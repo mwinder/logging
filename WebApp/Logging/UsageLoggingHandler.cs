@@ -8,7 +8,7 @@ namespace WebApp.Logging
 {
     public class UsageLoggingHandler : DelegatingHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger<UsageLoggingHandler>();
+        private static readonly ILog Log = LogManager.GetLogger<UsageLog>();
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

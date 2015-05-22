@@ -7,7 +7,7 @@ namespace WebApp.Logging
 {
     public class UsageLoggingMiddleware : OwinMiddleware
     {
-        private static readonly ILog Log = LogManager.GetLogger<UsageLoggingMiddleware>();
+        private static readonly ILog Log = LogManager.GetLogger<UsageLog>();
 
         public UsageLoggingMiddleware(OwinMiddleware next)
             : base(next) { }
