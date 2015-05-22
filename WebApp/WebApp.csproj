@@ -101,12 +101,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HypermediaExtensions.cs" />
-    <Compile Include="Logging\LoggingMiddleware.cs" />
+    <Compile Include="Logging\UsageLoggingMiddleware.cs" />
     <Compile Include="Logging\RequestExtensions.cs" />
     <Compile Include="Logging\ErrorLog.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Logging\UsageLog.cs" />
+    <Compile Include="Logging\UsageLoggingHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

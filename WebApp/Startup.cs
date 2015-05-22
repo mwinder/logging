@@ -17,7 +17,7 @@ namespace WebApp
                 { "configType", "INLINE" }
             });
 
-            application.Use<LoggingMiddleware>();
+            application.Use<UsageLoggingMiddleware>();
             application.UseWebApp();
         }
     }

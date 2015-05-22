@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebApp.Logging
 {
-    public class LoggingMiddleware : OwinMiddleware
+    public class UsageLoggingMiddleware : OwinMiddleware
     {
-        private static readonly ILog Log = LogManager.GetLogger<LoggingMiddleware>();
+        private static readonly ILog Log = LogManager.GetLogger<UsageLoggingMiddleware>();
 
-        public LoggingMiddleware(OwinMiddleware next)
+        public UsageLoggingMiddleware(OwinMiddleware next)
             : base(next) { }
 
         public async override Task Invoke(IOwinContext context)
@@ -21,11 +21,12 @@ namespace WebApp.Logging
             var request = context.Request;
             var response = context.Response;
 
+            Log.ThreadVariablesContext.Set("WebApp:requestTime", time.ElapsedMilliseconds + "ms");
             Log.Info(log =>
-                log("{0} {1} -> {2} {3} [{4}ms]",
+                log("{0} {1} -> {2} {3}",
                     request.Method, request.Uri,
-                    response.StatusCode, response.ReasonPhrase,
-                    time.ElapsedMilliseconds));
+                    response.StatusCode, response.ReasonPhrase));
+            Log.ThreadVariablesContext.Clear();
         }
     }
 }

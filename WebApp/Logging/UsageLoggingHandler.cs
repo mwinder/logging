@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebApp.Logging
 {
-    public class UsageLog : DelegatingHandler
+    public class UsageLoggingHandler : DelegatingHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger<UsageLog>();
+        private static readonly ILog Log = LogManager.GetLogger<UsageLoggingHandler>();
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

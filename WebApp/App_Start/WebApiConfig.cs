@@ -19,7 +19,7 @@ namespace WebApp
 
         private static void Register(HttpConfiguration configuration)
         {
-            configuration.MessageHandlers.Add(new UsageLog());
+            //configuration.MessageHandlers.Add(new UsageLoggingHandler());
 
             configuration.Services.Add(typeof(IExceptionLogger), new ErrorLog());
 
