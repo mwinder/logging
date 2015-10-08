@@ -1,3 +1,4 @@
+.vs/
 bin/
 obj/
 packages/
@@ -6,3 +7,4 @@ packages/
 .vagrant/
 WebApp/App_Data/*.log*
 WebApp/App_Data/emails/
+logs/
